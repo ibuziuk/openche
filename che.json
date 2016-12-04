@@ -24,19 +24,19 @@
         {
             "description": "Custom hostname for http service route.  Leave blank for default hostname, e.g.: <application-name>.<project>.<default-domain-suffix>",
             "name": "HOSTNAME_HTTP",
-            "value": "che.openshift.local",
+            "value": "che.openshift.mini",
             "required": false
         },
         {
             "description": "Name of the che-server Docker image.",
             "name": "CHE_SERVER_DOCKER_IMAGE",
-            "value": "codenvy/che-server:5.0.0-latest",
+            "value": "codenvy/che-server:local",
             "required": true
         },
         {
             "description": "Url of the OpenShift API",
             "name": "CHE_OPENSHIFT_ENDPOINT",
-            "value": "",
+            "value": "https://192.168.42.8:8443",
             "required": true
         },
         {
@@ -162,7 +162,7 @@
                             {
                                 "name": "${APPLICATION_NAME}",
                                 "image": "${CHE_SERVER_DOCKER_IMAGE}",
-                                "imagePullPolicy": "Always",
+                                "imagePullPolicy": "IfNotPresent",
                                 "privileged": true,
                                 "livenessProbe": {
                                     "tcpSocket": {

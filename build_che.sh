@@ -3,6 +3,7 @@
 set -e
 
 DEFAULT_CHE_IMAGE=codenvy/che-server:local
+GITHUB_REPO=/home/ilya/git/jbosstools-git/che
 
 if [ -z ${GITHUB_REPO+x} ]; then 
   echo >&2 "Variable GITHUB_REPO not found. Aborting"

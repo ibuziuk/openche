@@ -35,18 +35,17 @@
 
 set_parameters() {
     echo "Setting parameters"
-    DEFAULT_CHE_HOSTNAME=che.openshift.adb
-    DEFAULT_CHE_IMAGE=codenvy/che-server:nightly
+    
+    DEFAULT_CHE_HOSTNAME=che.openshift.mini
+    DEFAULT_CHE_IMAGE=codenvy/che-server:local
     DEFAULT_CHE_LOG_LEVEL=DEBUG
-    DEFAULT_CHE_TEMPLATE="./che.json"
+    DEFAULT_CHE_TEMPLATE="./che_debug.json"
 
     CHE_HOSTNAME=${CHE_HOSTNAME:-${DEFAULT_CHE_HOSTNAME}}
     CHE_IMAGE=${CHE_IMAGE:-${DEFAULT_CHE_IMAGE}}
     CHE_LOG_LEVEL=${CHE_LOG_LEVEL:-${DEFAULT_CHE_LOG_LEVEL}}
-
-    DEFAULT_CHE_OPENSHIFT_ENDPOINT=https://${CHE_HOSTNAME}:8443/
-    CHE_OPENSHIFT_ENDPOINT=${CHE_OPENSHIFT_ENDPOINT:-${DEFAULT_CHE_OPENSHIFT_ENDPOINT}}
     CHE_TEMPLATE=${CHE_TEMPLATE:-${DEFAULT_CHE_TEMPLATE}}
+    CHE_OPENSHIFT_ENDPOINT=https://$(minishift ip):8443
 }
 
 check_prerequisites() {
